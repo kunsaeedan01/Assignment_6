@@ -1,0 +1,74 @@
+
+
+
+class Main {
+
+  
+  public interface Transport {
+
+        void deliver();
+
+  }
+
+ public class Ship implements Transport {
+
+      public void deliver () {
+        
+          System.out.println("Logistics by the Sea");
+          
+      }
+
+ 
+
+
+public class Truck implements Transport {
+
+        public void deliver() {
+
+           System.out.println("Logistics by the Land");
+
+        }
+
+
+}
+
+
+public abstract class Factory {
+    
+    public void deliver() {
+        Transport transport = this.create();
+        transport.deliver();
+    }
+
+    public abstract Transport create();
+
+}
+
+
+public class ShipFactory extends Factory {
+
+    @Override
+    public Transport create() {
+        return new Ship();
+    }
+
+}
+
+
+public class TruckFactory extends Factory {
+
+    @Override
+    public Transport create() {
+        return new Truck();
+    }
+    
+}
+
+
+  public static void main(String[] args) {
+    
+     
+
+
+  }
+}

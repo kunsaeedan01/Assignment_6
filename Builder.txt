@@ -1,0 +1,132 @@
+class Main {
+
+  public interface Builder {
+
+      void toBuildGarage();
+
+      void toBuildGarden();
+
+      void toBuildStatues();
+
+      void toBuildPool();
+
+  }
+
+public enum TypesOfHouses {
+
+        STANDARD,
+
+        POOLINCLUDED,
+
+        GARDENINCLUDED,
+
+        STATUESINCLUDED,
+
+        GARAGEINCLUDED,
+
+}
+
+public class HouseBuilder implements Builder {
+
+      private Boolean withGarage = false;
+
+      private Boolean withPool = false;
+
+      private Boolean withStatues = false;
+
+      private Boolean withGarden = false;
+
+
+}
+
+
+@Override
+    public void toBuildGarage() {
+        this.withGarage = true;
+    }
+
+    @Override
+    public void toBuildPool() {
+        this.withPool = true;
+    }
+
+    @Override
+    public void toBuildStatues() {
+        this.withStatues = true;
+    }
+
+    @Override
+    public void toBuildGarden() {
+        this.withGarden = true;
+    }
+    
+
+   public House finalConfiguration () {
+
+        return new House(this.withGarage, this.withPool, this.withStatues, this.withGarden);
+
+   }
+
+
+
+  public class House {
+
+    private final String walls = "walls";
+
+    private final String roof = "roof";
+
+    private final String floor = "floor";
+
+    private final String pool = "pool";
+
+    private final String garden = "garden";
+
+    private final String statues = "statues";
+
+    private final String garage = "garage";
+
+
+
+    private ArrayList<String> components = new ArrayList<String>();
+
+
+    public void toTest() {
+        
+         System.out.println("This is the list of components that you added to your house model : ");
+
+
+
+        for (String component : this.components) {
+            System.out.println(component);
+        }
+    }
+
+
+public House(Boolean withGarage, Boolean withPool, 
+                 Boolean withStatues, Boolean withGarden) {
+        
+
+        this.components.add(this.walls);
+        this.components.add(this.floor);
+        this.components.add(this.roof);
+
+        if (withGarage) this.components.add(this.garage);
+        if (withPool) this.components.add(this.pool);
+        if (withStatues) this.components.add(this.statues);
+        if (withGarden) this.components.add(this.garden);
+    }
+
+
+
+
+
+  }
+
+
+
+  public static void main(String[] args) {
+   
+}
+
+
+}
